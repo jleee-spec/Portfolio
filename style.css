@@ -1,0 +1,647 @@
+/* =========================
+   Reset
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: #f7f7f5;
+    color: #333;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+img,
+video {
+    display:block;
+    width:100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   Header
+========================= */
+
+header {
+    position: fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:80px;
+
+    z-index:1000;
+
+    background:rgba(247,247,245,.58);
+    border-bottom:1px solid rgba(0,0,0,.05);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.header-inner {
+    width: 84%;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section:not(.hero) {
+    padding:100px 8%;
+    position:relative;
+    z-index:2;
+}
+
+main {
+    position:relative;
+    z-index:2;
+    margin-top:100vh;
+    background:#f7f7f5;
+}
+
+footer {
+    position:relative;
+    z-index:2;
+    background:#f7f7f5;
+}
+
+/* ロゴ */
+
+.logo {
+    font-size: 24px;
+    letter-spacing: .15em;
+    font-weight: 400;
+}
+
+/* ナビ */
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+nav a {
+    font-size: 14px;
+    letter-spacing: .1em;
+    transition: .3s;
+}
+
+nav a:hover {
+    opacity: .5;
+}
+
+/* =========================
+   Hero
+========================= */
+
+.hero{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+
+    background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("image/hero.webp") center/cover no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero-inner h1 {
+    font-size: clamp(48px, 8vw, 90px);
+    letter-spacing: .15em;
+    color: #fff;
+    font-weight: 300;
+}
+
+.hero-inner p{
+    margin-top:18px;
+    font-size:16px;
+    font-weight:300;
+    letter-spacing:.18em;
+    color:#fff;
+    opacity:.9;
+}
+
+.hero-inner {
+    opacity:1;
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.hero.hide .hero-inner {
+    opacity:0;
+    transform:translateY(-40px);
+}
+
+/* =========================
+   Scroll
+========================= */
+
+.scroll-indicator {
+    position:fixed;
+    left:50%;
+    bottom:40px;
+
+    z-index:1001;
+
+    transform:translateX(-50%);
+
+    color:#fff;
+    letter-spacing:.3em;
+    font-size:13px;
+
+    animation:scrollMove 2s infinite;
+    transition:opacity .5s ease;
+}
+
+.scroll-hide {
+    animation:none;
+    opacity:0 !important;
+    pointer-events:none;
+}
+
+@keyframes scrollMove {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, 10px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 25px);
+    }
+}
+
+/* =========================
+   Section Title
+========================= */
+
+h2 {
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: .08em;
+    font-weight: 400;
+    color: #222;
+}
+
+/* =========================
+   Design Title
+========================= */
+
+.design-title {
+    font-size:20px;
+    font-weight:300;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #444;
+}
+
+.works-grid + .design-title {
+    margin-top: 80px;
+}
+
+/* =========================
+   About
+========================= */
+
+.about {
+    max-width: 950px;
+    margin: auto;
+    text-align: center;
+}
+
+.about p {
+    color: #666;
+    font-size: 17px;
+    line-height: 2.2;
+}
+
+/* =========================
+   Design
+========================= */
+
+.works-grid {
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+    gap: 45px;
+    align-items: stretch;
+}
+
+.web-grid{
+    max-width:1000px;
+    margin:0 auto;
+}
+
+/* =========================
+   Card
+========================= */
+
+.card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all .35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   Image & Video
+========================= */
+
+.card img,
+.card video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+}
+
+.card:hover img,
+.card:hover video {
+    transform: scale(1.03);
+}
+
+/* =========================
+   Card Content
+========================= */
+
+.card-content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-content h4 {
+    font-size:22px;
+    font-weight:500;
+    letter-spacing:.03em;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.category {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size:12px;
+    letter-spacing:.15em;
+    color:#999;
+    text-transform: uppercase;
+}
+
+.card-content p {
+    color: #666;
+    line-height: 1.9;
+    font-size: 15px;
+    flex: 1;
+}
+
+/* =========================
+   View Site Button
+========================= */
+
+.card-content a {
+    display:inline-block;
+    margin-top:32px;
+    border:1px solid #444;
+    padding:12px 28px;
+    font-size:14px;
+    letter-spacing:.08em;
+    border-radius:30px;
+    width:max-content;
+    transition:
+        background .3s,
+        color .3s,
+        transform .3s,
+        box-shadow .3s;
+}
+
+.card-content a:hover{
+    background:#222;
+    color:#fff;
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+/* =========================
+   Contact
+========================= */
+
+.contact {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.contact p {
+    color: #666;
+    margin-bottom: 45px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    padding:16px 18px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    background:#fff;
+    transition:
+        border-color .3s,
+        box-shadow .3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    outline:none;
+    border-color:#666;
+    box-shadow:0 0 0 4px rgba(0,0,0,.05);
+}
+
+.contact-btn {
+    align-self: center;
+    padding: 16px 55px;
+    border: none;
+    border-radius: 50px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: .08em;
+    transition: .3s;
+}
+
+.contact-btn:hover {
+    background: #555;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer{
+    padding:40px 0;
+    text-align:center;
+    color:#888;
+    font-size:14px;
+}
+
+/* =========================
+   Popup
+========================= */
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: .35s ease;
+    z-index: 9999;
+}
+
+.popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: popupFade .35s ease;
+}
+
+.popup-content img,
+.popup-content video {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.18);
+}
+
+#popup-video,
+#popup-image {
+    display: none;
+}
+
+.popup-close {
+    position: absolute;
+    top: 35px;
+    right: 45px;
+    font-size: 48px;
+    font-weight: 300;
+    color: #555;
+    cursor: pointer;
+    transition: .3s;
+    user-select: none;
+}
+
+.popup-close:hover {
+    color: #000;
+    transform: rotate(90deg);
+}
+
+@keyframes popupFade {
+
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f2f2f2;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c8c8c8;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9a9a9a;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width:1024px){
+
+    section:not(.hero){
+        padding:80px 7%;
+    }
+
+    .works-grid{
+        grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    }
+
+}
+
+@media (max-width:768px){
+
+    .hero{
+        height:100vh;
+    }
+
+    .hero-inner h1{
+        font-size:48px;
+    }
+
+    .hero-inner p{
+        font-size:16px;
+    }
+
+    h2{
+        font-size:28px;
+        margin-bottom:45px;
+    }
+
+    section:not(.hero){
+        padding:70px 6%;
+    }
+
+    .works-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .card-content{
+        padding:22px;
+    }
+
+    .card-content h4{
+        font-size:22px;
+    }
+
+    .popup-close{
+        top:20px;
+        right:25px;
+        font-size:38px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .hero{
+        height:100vh;
+    }
+
+    .hero-inner h1{
+        font-size:38px;
+        letter-spacing:.1em;
+    }
+
+    .hero-inner p{
+        font-size:14px;
+    }
+
+    .about p{
+        font-size:15px;
+        line-height:2;
+    }
+
+    .contact-btn{
+        width:100%;
+    }
+
+}
+
+/* =========================
+   Scroll Animation
+========================= */
+
+.fade-up {
+    opacity:0;
+    transform:translateY(30px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.popup-item {
+    cursor:pointer;
+}
+
+/* .fade-up {
+    opacity:1;
+    transform:translateY(0);
+} */
